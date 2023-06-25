@@ -11,3 +11,66 @@
 w_arr의 값이 1일때 정답 ans에 1을 더함
 
 ans 출력
+
+/* package whatever; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		BufferedReader br = BufferedReader(new InputStreamReader(System.in));
+		int[][] w_arr = new int [100][100];
+		int t = Integer.parseInt(br.readLine());
+		int ans =0;
+		
+		for(int i=0;i<t;i++)
+		{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int x_left_down = Integer.parseInt(st.nextToken());
+			int y_left_down = Integer.parseInt(st.nextToken());
+			
+			int x_right_down = x_left_down+10;
+			int y_right_down = y_left_down;
+			
+			int x_right_up = x_left_down+10;
+			int y_right_up = y_leftdown+10;
+			
+			int x_left_up = x_left_down;
+			int y_left_up = y_left_down+10;
+			
+			for(int y=0;y<100;y++) 
+			{
+				if(y>=y_left_down&&y<y_left_up)
+				{
+					for(int x=0;x<100;x++)
+					{
+						if(x>=x_left_down&&x<x_right_down)
+						{
+							w_arr[y][x]==1;
+						}
+					}
+				}
+				
+			}
+			
+			for(int y=0;y<100;y++)
+			{
+				for(int x=0;x<100;x++)
+				{
+					if(w_arr[y][x]==1)
+					{
+						ans+=1;
+					}
+				}
+			}
+		}
+		
+		System.out.println(ans);
+		
+	}
+}
