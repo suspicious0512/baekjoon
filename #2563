@@ -12,16 +12,13 @@ w_arr의 값이 1일때 정답 ans에 1을 더함
 
 ans 출력
 
-/* package whatever; // don't place package name! */
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
-/* Name of the class has to be "Main" only if the class is public. */
-class Ideone
+public class Main
 {
-	public static void main (String[] args) throws java.lang.Exception
+	public static void main(String[] args) throws IOException
 	{
 		BufferedReader br = BufferedReader(new InputStreamReader(System.in));
 		int[][] w_arr = new int [100][100];
@@ -33,6 +30,8 @@ class Ideone
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int x_left_down = Integer.parseInt(st.nextToken());
 			int y_left_down = Integer.parseInt(st.nextToken());
+			
+			System.out.printf("왼좌x : %d",x_left_down);
 			
 			int x_right_down = x_left_down+10;
 			int y_right_down = y_left_down;
@@ -51,7 +50,7 @@ class Ideone
 					{
 						if(x>=x_left_down&&x<x_right_down)
 						{
-							w_arr[y][x]==1;
+							w_arr[y][x]=1;
 						}
 					}
 				}
@@ -71,6 +70,6 @@ class Ideone
 		}
 		
 		System.out.println(ans);
-		
 	}
 }
+
