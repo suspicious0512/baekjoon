@@ -1,0 +1,94 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class Main 
+{
+
+    public static void main(String[] args) throws IOException
+    {
+        //1. BufferedReader로 1행씩 String s에 입력 받는다.
+        //2. 입력받은 문자열의 길이를 저장하는 정수형 변수 s_size를 만든다.
+        //3. 전에 입력 받았던 문자열의 길이보다 지금 입력받은 문자열의 길이가 더 작다면 차이만큼 '*'을 추가하고
+        //   지금 입력 받은 문자열의 길이를 s_size에 저장한다.
+        //4. 각 행들의 수정을 완료하고 String 배열 s_listr에 넣는다.
+        //5. String 배열 s_list의 원소중 가장 긴 문자열의 길이 n을 찾아 n x n의 2차원 char 배열 c_arr을 만든다.
+        //6. 2차원 배열 s_arr에 String 배열 s_list의 원소를 순서대로 넣는다.
+        //7. 반복문에서 s_arr의 원소가 '*'아니라면 출력한다. 이때 출력은 y->x 가 아닌 x->y로 출력한다.
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<String> s_list = new ArrayList<String>();
+        int before_size = 0;
+        String s = "";
+        int max = -999;
+        String answer = "";
+
+        while(((s = br.readLine())!=null)&&(s.length())>0) 
+        {
+            if(s.length()<before_size) 
+            {
+                for(int j=0;j<before_size-s.length()+1;j++)
+                {
+                    s+="*";
+                }
+            }
+
+            s_list.add(s);
+            before_size = s.length();
+
+            for(int i=0;i<s_list.size();i++) 
+            {
+                if(s_list.get(i).length()>max) 
+                {
+                    max=s_list.get(i).length();
+                }
+            }
+
+        }
+
+            char[][] s_arr = new char [max][max];
+            //System.out.println(max);
+
+            for(int y=0;y<s_list.size();y++) 
+            {
+                for(int x=0;x<max;x++) 
+                {
+
+                    s_arr[y][x]=s_list.get(y).charAt(x);
+
+                    //System.out.printf("%c",s_list.get(y).charAt(x));
+                }
+                //System.out.println();
+            }
+
+            StringBuilder sb= new StringBuilder();
+
+            for(int y=0;y<max;y++) 
+            {
+                for(int x=0;x<max;x++) 
+                {
+                    if(s_arr[x][y]!='*') 
+                    {
+                        sb.append(s_arr[x][y]);                   
+                    }
+                }
+            }
+            
+            
+            for(int i=0;i<sb.length();i++) 
+            {
+            	if(sb.charAt(i)!=' ') {
+            		System.out.println(sb.charAt(i));
+            		answer += sb.charAt(i);
+            	}else{
+            		System.out.println("공백 입니다.");
+            	}
+            }
+            
+            System.out.println(answer.trim());
+            
+
+    }
+
+}
