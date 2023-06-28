@@ -1,0 +1,48 @@
+그냥 배열 두개 만들어서 같은 위치 요소 끼리 빼서 출력하면 끝난다.
+** BufferedWriter 쓰는게 printf 쓰는거보다 느리다. 그럼 BufferedWriter는 언제쓰는게 더 빠른걸까? **
+-------------------------------------------------------------------------------------
+package main;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class Main 
+{
+	
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		int[] chess_arr = {1,1,2,2,2,8};
+		int[] check_arr = new int [6];
+		int[] ans_arr = new int [6];
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		for(int i=0;i<check_arr.length;i++) 
+		{
+			check_arr[i]=Integer.parseInt(st.nextToken());
+		}
+		
+		for(int i=0;i<chess_arr.length;i++) 
+		{
+			//System.out.printf("%d ",chess_arr[i]-check_arr[i]);
+			bw.write(chess_arr[i]-check_arr[i]+" ");
+			
+		}
+		
+		bw.flush();
+		bw.close();
+		
+		
+		
+		
+		
+	}
+
+}
