@@ -75,3 +75,12 @@
 
 <p>정답과의 절대오차 또는 상대오차가 <mjx-container class="MathJax" jax="CHTML" style="font-size: 109%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-script style="vertical-align: 0.393em;"><mjx-texatom size="s" texclass="ORD"><mjx-mo class="mjx-n"><mjx-c class="mjx-c2212"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c34"></mjx-c></mjx-mn></mjx-texatom></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mn>10</mn><mrow data-mjx-texclass="ORD"><mo>−</mo><mn>4</mn></mrow></msup></math></mjx-assistive-mml><span aria-hidden="true" class="no-mathjax mjx-copytext">\(10^{-4}\)</span></mjx-container> 이하이면 정답으로 인정한다.</p>
 
+### 풀이 중 문제점
+ <p><strong>20</strong>코드를 짤 때는 논리를 정돈하고 짜자.</p>
+  <p>중간에 논리가 잘못됐다는 것을 깨달았으면 주석으로 표시를 해두자.</p>
+  
+ <p><strong>20</strong>좀 더 명확한 변수명을 사용하자.</p>
+ <p>나만 알아볼 수 있는 변수명 + 한번에 이해 불가능한 변수명은 사용하지말자.</p>
+ <p>모르는 영어 단어 공부한다 생각하고 검색해서 사용하자.</p>
+ 
+ 
