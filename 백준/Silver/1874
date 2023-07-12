@@ -1,0 +1,95 @@
+나중에 풀면 그대로 옮겨서 수정할것
+
+조건따라 달라지는 값이 두개 있어서 하나 고정하고 하나는 포인터로 사용해서 하던가 둘다 포인터로 사용해야할듯
+
+예시에서 4,3,6,8,7,5,2,1
+이거는 반복문이 1에서 8까지일때
+
+i=1일때 4와 비교, i가 작으므로 stack.push()하고 반복문 다음값으로
+i =2 일때 4와 비교, i가 작으믈 stack.push()
+i =3 일때 4와 비교, i가 작음 , satck.push()
+i =4 일때 4와 비교, i와 같음, stack.push(),stack.pop(), 비교해야하는 숫자 다음숫자로(index +=1), 반복문 다음값으로
+i = 5일때 3과 비교, i가 더 큼, stack.peek(), 스택 최상단값이 비교해야하는 숫자와 다르면 문제에서 설명하는거에 반함 
+no 출력하고 break; 근데 예시에서는 최상단값이 3 비교값이 3 같으므로 stack.push(), stack.pop(), index+=1, i+=1;
+i = 6일때 6과 비교 , i와 같음, stack.push(), stack.pop(), index+=1, 반복문 다음값으로
+i = 7일때 8과 비교 , i가 작음, stack.push()
+i = 8일때 8과 비교 아무튼 시발 왜안되는거지 좆같네
+
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+
+public class Main 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int [] arr = new int [n];
+		boolean check = true;
+		Stack <Integer> stack = new Stack<Integer>();
+		
+		int index = 0;
+		int checknum=1;
+		
+		while(checknum<=n) 
+		{
+			if(stack.size()==0) 
+			{
+				stack.push(checknum++);
+			}
+			else 
+			{
+				if(arr[index]>checknum) 
+				{
+					stack.push(checknum++);
+					System.out.println(stack);
+					
+				}
+				else if(arr[index]==checknum) 
+				{
+					stack.push(checknum++);
+					stack.pop();
+					index++;
+				}
+				else {
+					if(stack.peek()==arr[index]) 
+					{
+						stack.pop();
+						index++;
+						checknum++;
+					}
+					else {
+						check = false;
+						break;
+					}
+				}
+			}
+		}
+		
+		if(check) 
+		{
+			while(stack.size()!=0) 
+			{
+				stack.pop();
+			}
+		}
+		else {
+			System.out.println("NO");
+			
+		}
+		
+	
+		
+		
+		
+	
+	}
+
+}
