@@ -1,0 +1,73 @@
+그냥 무난하게 품
+스택 메소드 사용하는 방법 알려주는 문제
+솔직히 왜 실버 4인지 잘 모르겠음
+
+----------------------------------
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class Main 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new BufferedReader(new InputStreamReader(System.in)));
+		
+		int n = Integer.parseInt(br.readLine());
+		Stack <Integer> stack = new Stack<Integer>();
+		
+		for(int i=0;i<n;i++) 
+		{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			
+			String s = st.nextToken();
+			int num=0;
+			
+			if(st.hasMoreTokens()) 
+			{
+				num = Integer.parseInt(st.nextToken());
+			}
+			
+			if(s.equals("push")) 
+			{
+				stack.push(num);
+			}
+			if(s.equals("pop")) 
+			{
+				if(stack.size()!=0)
+				System.out.println(stack.pop());
+				else System.out.println("-1");
+			}
+			if(s.equals("size")) 
+			{
+				System.out.println(stack.size());
+			}
+			if(s.equals("empty")) 
+			{
+				if(stack.size()==0) {
+					System.out.println("1");
+				}
+				else {
+					System.out.println("0");
+				}
+			}
+			if(s.equals("top")) 
+			{
+				if(stack.size()!=0) {
+					System.out.println(stack.peek());
+				}
+				else {
+					System.out.println("-1");
+				}
+			}
+			
+		}
+
+	}
+
+}
