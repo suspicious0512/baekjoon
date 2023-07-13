@@ -1,0 +1,89 @@
+균형잡힌 문자열 안에 있는 문자열은 균형이 잡혀야한다
+
+[ ( ] ) 는 [] 안에 ( 만 있어서 일단 안됨
+어떻게 논리를 바꿔야할까
+다시 처음부터 해야하나
+map으로 짝지어서 stack에 넣고 peek()을 value로 넣어서 key값 찾아서 입력받은 거랑 같으면 pop하고 아니면 틀렸다고 해야하나>
+모르겠네
+ 개졸ㄹ디ㅏ
+
+ ------------------------
+ package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.EmptyStackException;
+import java.util.Stack;
+
+public class Main 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new BufferedReader(new InputStreamReader(System.in)));
+		
+	
+		
+		while(true) 
+		{
+			Stack <Character> stack1 = new Stack <Character>();
+			Stack <Character> stack2 = new Stack <Character>();
+			
+			boolean check = true;
+			String s = br.readLine();
+			if(s.equals(".")) 
+			{
+				break;
+			}
+			
+			for(int i=0;i<s.length();i++) 
+			{
+				if(s.charAt(i)=='(')
+				{
+					stack1.push(s.charAt(i));
+				}
+				else if(s.charAt(i)=='[')
+				{
+					stack2.push(s.charAt(i));
+				}
+				else if(s.charAt(i)==')')
+				{
+					try {
+						stack1.pop();
+					}
+					catch(EmptyStackException e) 
+					{
+						continue;
+					}
+				}
+				else if(s.charAt(i)==']')
+				{
+					try {
+						stack2.pop();
+					}
+					catch(EmptyStackException e) 
+					{
+						continue;
+					}
+				}
+			}
+			
+			//System.out.println(stack1);
+			//System.out.println(stack2);
+			if(stack1.size()==0&&stack2.size()==0) 
+			{
+				System.out.println("yes");
+			}
+			else 
+			{
+				System.out.println("no");
+			}
+			
+			
+		}
+
+
+	}
+
+}
