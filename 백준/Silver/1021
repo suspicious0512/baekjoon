@@ -1,0 +1,96 @@
+1. 소요시간 1시간 24분
+2. ㅈㄴ 헷갈리네 시부레
+3. 되도록 왼쪽으로 가는게 최소 횟수 구하는건데 처음에 그걸 몰랐음 걍 반 딱 나누고 왼쪽 오른쪽 보냄
+4. deque를 강제로 LinkedList로 바꿔서 위치 구하는 메소드 사용이 되네. 몰랐음
+---------------------------------
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+
+public class Main 
+{
+
+	public static void move_left() 
+	{
+		
+	}
+	
+	public static void move_right() 
+	{
+		
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		Deque<Integer> deque = new LinkedList<>();
+		
+		BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		
+		int m = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine());
+		
+		for(int i=0;i<n;i++) 
+		{
+			deque.add(i+1);
+		}
+		
+		//System.out.println(deque);
+		
+		int ans = 0;
+		
+		for(int i=0;i<m;i++) 
+		{
+			int tmp = Integer.parseInt(st.nextToken());
+			
+			//System.out.println(tmp);
+			
+			if(deque.size()-((LinkedList<Integer>) deque).indexOf(tmp)>=((LinkedList<Integer>) deque).indexOf(tmp))
+			{
+				
+				while(deque.peek()!=tmp) 
+				{
+					//System.out.println("모든 수 왼쪽으로 이동");
+					deque.add(deque.pop());
+					//System.out.println("ans+=1");
+					ans+=1;
+					//System.out.printf("ans : %d\n",ans);
+					//System.out.println(deque);
+				}
+				
+				deque.pop();
+				//System.out.println(deque);
+			}else 
+			{
+				
+				
+				while(deque.peek()!=tmp) 
+				{
+					//System.out.println("모든 수 오른쪽으로 이동");
+					deque.addFirst(deque.removeLast());
+					//System.out.println("ans+=1");
+					ans+=1;
+					//System.out.printf("ans : %d\n",ans);
+					//System.out.println(deque);
+				}
+				
+				deque.pop();
+				//System.out.println(deque);
+			}
+		}
+		
+		System.out.println(ans);
+		
+		
+	}
+
+}
