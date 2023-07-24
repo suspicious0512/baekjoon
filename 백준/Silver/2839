@@ -1,0 +1,113 @@
+87%에서 틀리는데 반례가 있나보다
+
+5kg짜리가 최대한 많은게 개수가 적어지니까
+처음에 입력받은 수 n을 5로 나눈 몫을 저장하고
+n을 5로 나눈 나머지를 갖고 판단함
+
+나머지가 3의 배수면 나머지 /3+몫 출력
+나머지가 3의 배수가 아니면 5kg 개수에서 1개 빼고 나머지에 5를 더한 다음 다시 나머지가 3의 배수인지 판단
+
+중간 조건식에 처음부터 몫이 0이라는건 3,4를 의미하는거라서 그것보다 크면
+else문 거쳐서 check가 true로 바뀌게 만들어 나중에 몫이 0이 되는건 문제 없게 함.
+
+이론상 완벽한데 반례가 있나봄 87%에서 틀림
+
+---------------------------------------------
+
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int 몫 = n/5;
+		int 나머지 = n%5;
+		boolean check = false;
+		
+		while(true) 
+		{
+			if(나머지%3==0) 
+			{
+				System.out.println(나머지/3+몫);
+				break;
+			}
+			else 
+			{
+				if(몫==0&&check==false) 
+				{
+					System.out.println("-1");
+					break;
+				}
+				else 
+				{
+					check = true;
+					나머지+=5;
+					몫-=1;
+					continue;
+				}
+			}
+		}
+	}
+}
+----------------------------------------------
+
+**질문 게시판 읽어봤는데 반대로 3씩 빼면서 5의 배수인지 판단하라는데 좆같네 왜읽었지**
+이거는 못썼고 다시 처음부터 내 생각대로 짜봤는데 또 87%에서 틀리네 시발
+----------------------------------------------------------------------------
+
+
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int 몫 = n/5;
+		int 나머지 = n%5;
+		
+		if(몫==0) 
+		{
+			if(나머지%3!=0) 
+			{
+				System.out.println("-1");
+			}
+		}
+		else 
+		{
+			while(나머지%3!=0) 
+			{
+				if(몫==0) 
+				{
+					break;
+				}
+				몫-=1;
+				나머지+=5;
+			}
+			System.out.println(몫+나머지/3);
+		}
+		
+	}
+
+}
+
+
