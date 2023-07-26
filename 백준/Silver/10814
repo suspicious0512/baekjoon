@@ -1,0 +1,93 @@
+1. map의 value값들을 비교해서 
+2. 제일 작은 value값을 찾아
+3. value key 형식으로 출력하고
+4. map에서 삭제
+순서대로 입력되는 LinkedHashMap이므로 나이가 같을때는 고민할필요없이 그냥 먼저 검색되는거 출력하고 삭제
+
+라는 논리로 작성하였으나 LinkedHashMap이 순서가 고정이 안됨. 자꾸 나이 같은애들 끼리 순서가 지 맘대로 바뀜.
+
+---------------------------------------------------------------------------
+질문 게시판에서 힌트 좀 얻었는데 아예 잘못 생각함 동명이인이 없다고는 안함 이건 몰랐지...
+
+------------------------------------------------------------------------------
+
+package main;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+public class Main 
+{
+	
+	public static <K,V> K getKey(Map<K,V> map, V value)
+	{
+		for(K key : map.keySet()) 
+		{
+			if(value.equals(map.get(key))) 
+			{
+				return key;
+			}
+		}
+		return null;
+		
+	}
+
+	public static void main(String[] args) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		LinkedHashMap<String,Integer> manage = new LinkedHashMap<>();
+		
+		for(int i=0;i<n;i++) 
+		{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			
+			int age = Integer.parseInt(st.nextToken());
+			String name = st.nextToken();
+			
+			manage.put(name, age);
+		}
+		
+		while(manage.size()!=0) 
+		{
+			//System.out.printf("초기 map : %s\n",manage);
+			
+			Integer minValue = Collections.min(manage.values());
+			
+			//System.out.printf("minvalue : %d\n",minValue);
+			
+			/*
+			for(String name : Set.copyOf(manage.keySet()))
+			{
+				
+				if(manage.get(name).equals(minValue)) 
+				{
+					System.out.printf("정답 출력 %d %s\n",minValue,name);
+					manage.remove(name);
+				}
+				else {
+					continue;
+				}
+			}
+			*/
+			
+			while(manage.containsValue(minValue)) 
+			{
+				System.out.printf("%d %s\n",minValue,getKey(manage,minValue));
+				manage.remove(getKey(manage,minValue));
+			}
+			
+			//System.out.printf("제거 하고 난 후 : %s\n",manage);
+		}
+		
+
+	}
+
+}
